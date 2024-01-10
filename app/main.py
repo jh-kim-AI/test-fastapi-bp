@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from logging import log
 import uvicorn
-from path
+from path import Path
 
 
 if __name__ == "__main__":
