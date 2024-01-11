@@ -1,4 +1,6 @@
-uvicorn==0.25.0
+uvicorn[standard]==0.25.0
 path==16.9.0
 loguru==0.7.2
 pydantic-settings==2.1.0
+fastapi==0.108.0
+fastapi-users[beanie,oauth]==12.1.2
