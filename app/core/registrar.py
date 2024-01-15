@@ -17,13 +17,15 @@ async def register_init(app: FastAPI):
     # await create_table()
     # await create_index()
 
-    # yield
+    try:
+        yield
 
+    finally:
     # await drop_index()
     # await drop_table()
     # await drop_db()
 
-    pass
+        pass
 
 def register_app():
     app = FastAPI(

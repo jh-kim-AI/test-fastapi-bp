@@ -1,3 +1,4 @@
+# pylint: disable=all
 # Listen to the internal network port
 bind = '0.0.0.0:8001'
 
@@ -20,7 +21,7 @@ timeout = 120
 # if set to True, the supervisor startup log is:
 # Gave up: nebula_server entered FATAL state, too many start retries too quickly
 # then you need to change this to: False
-daemon = True
+daemon = False
 
 # Work mode coroutine
 worker_class = 'uvicorn.workers.UvicornWorker'

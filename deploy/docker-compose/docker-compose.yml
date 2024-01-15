@@ -1,4 +1,4 @@
-version: '3.11'
+version: '3.8'
 
 networks:
   nebula_network:
@@ -9,29 +9,21 @@ networks:
       config:
         - subnet: 172.10.10.0/24
 
-volumes:
-  nebula_mongodb:
-    name: nebula_mongodb
-  nebula_static:
-    name: nebula_static
-
 services:
   nebula_server:
     build:
       context: ../../
       dockerfile: nebula.dockerfile
+    ports:
+      - 8000:8001
     container_name: nebula_server
     restart: always
-    depends_on:
-      - nebula_mongodb
-    volumes:
-      - nebula_static:/nebula/app/static
     networks:
       - nebula_network
     command:
       - /bin/sh
       - -c
       - |
-        wait-for-it -s nebula_mongodb:27017 -t 300
         mkdir -p /var/log/supervisor/
         supervisord -c /nebula/deploy/supervisor.conf
+        supervisorctl restart nebula_server
